@@ -252,9 +252,9 @@ body {
   align-items: center;
 }
 
-/* Banner Ad at the Top */
-.ad-container {
-  display: flex;              /* center the ad horizontally */
+.top-banner-ad {
+  width: 100%;               /* full width of screen */
+  display: flex;             /* center horizontally */
   justify-content: center;
-  margin-bottom: 10px;        /* space below the banner */
+  margin-bottom: 10px;       /* space below the banner */
 }
