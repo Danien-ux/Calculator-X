@@ -1,0 +1,242 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 10px;
+}
+
+.calculator-container {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 100%;
+    max-width: 320px;
+    position: relative;
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.header h1 {
+    font-size: 18px;
+    color: #333;
+    font-weight: 600;
+}
+
+.mode-btn {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 12px;
+    color: #495057;
+    transition: background-color 0.2s;
+}
+
+.mode-btn:hover {
+    background-color: #e9ecef;
+}
+
+/* Display */
+.display {
+    background-color: #000;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+#display {
+    width: 100%;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 28px;
+    text-align: right;
+    padding: 0;
+    outline: none;
+    letter-spacing: 1px;
+}
+
+#display::placeholder {
+    color: #666;
+}
+
+#history-list {
+    background-color: #333;
+    border-radius: 4px;
+    max-height: 120px;
+    overflow-y: auto;
+    margin-top: 10px;
+    padding: 8px;
+    font-size: 12px;
+    color: #fff;
+    line-height: 1.4;
+}
+
+.history-item {
+    margin-bottom: 4px;
+    cursor: pointer;
+    padding: 2px 0;
+    border-bottom: 1px solid #555;
+    transition: background-color 0.2s;
+}
+
+.history-item:hover {
+    background-color: #444;
+}
+
+.history-item:last-child {
+    border-bottom: none;
+}
+
+.clear-history-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: #fff;
+    font-size: 10px;
+    padding: 2px 6px;
+    border-radius: 3px;
+    cursor: pointer;
+    display: none;
+}
+
+#history-list:not(:empty) ~ .clear-history-btn {
+    display: block;
+}
+
+.clear-history-btn:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Buttons */
+.buttons {
+    display: grid;
+    gap: 8px;
+}
+
+.row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+}
+
+.row.sci-row {
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.sci-row .equals {
+    grid-row: span 3;
+}
+
+.btn {
+    height: 48px;
+    border: none;
+    border-radius: 6px;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.1s ease;
+    touch-action: manipulation;
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+/* Normal Mode Styles */
+.btn.num {
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+.btn.num:hover {
+    background-color: #e9ecef;
+}
+
+.btn.op {
+    background-color: #e9ecef;
+    color: #666;
+}
+
+.btn.op:hover {
+    background-color: #dee2e6;
+}
+
+.btn.equals {
+    background-color: #007bff;
+    color: #fff;
+    grid-row: span 2;
+    font-size: 24px;
+}
+
+.btn.equals:hover {
+    background-color: #0056b3;
+}
+
+.zero {
+    grid-column: span 2;
+}
+
+/* Scientific Mode Styles */
+#buttons-scientific .btn.sci {
+    background-color: #ffc107;
+    color: #333;
+}
+
+#buttons-scientific .btn.sci:hover {
+    background-color: #e0a800;
+}
+
+#buttons-scientific .btn.equals {
+    grid-column: 5;
+    grid-row: span 3;
+    height: auto;
+    background-color: #28a745;
+}
+
+#buttons-scientific .btn.equals:hover {
+    background-color: #218838;
+}
+
+/* Responsive adjustments */
+@media (max-width: 400px) {
+    .calculator-container {
+        margin: 10px;
+        padding: 15px;
+    }
+    
+    .btn {
+        height: 44px;
+        font-size: 16px;
+    }
+    
+    #display {
+        font-size: 24px;
+    }
+}
