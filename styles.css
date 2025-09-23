@@ -19,9 +19,9 @@ body {
     background-color: #fff;
     border-radius: 12px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    padding: 20px;
+    padding: 18px;
     width: 100%;
-    max-width: 320px;
+    max-width: 130px;
     position: relative;
 }
 
@@ -30,13 +30,13 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 15px;
+    margin-bottom: 13px;
 }
 
 .header h1 {
-    font-size: 18px;
+    font-size: 12px;
     color: #333;
-    font-weight: 600;
+    font-weight: 100;
 }
 
 .mode-btn {
@@ -82,21 +82,21 @@ body {
 #history-list {
     background-color: #333;
     border-radius: 4px;
-    max-height: 120px;
+    max-height: 65px;
     overflow-y: auto;
-    margin-top: 10px;
-    padding: 8px;
-    font-size: 12px;
+    margin-top: 6px;
+    padding: 3px;
+    font-size: 9px;
     color: #fff;
-    line-height: 1.4;
+    line-height: 0.67;
 }
 
 .history-item {
-    margin-bottom: 4px;
+    margin-bottom: 2px;
     cursor: pointer;
-    padding: 2px 0;
+    padding: 1px 0;
     border-bottom: 1px solid #555;
-    transition: background-color 0.2s;
+    transition: background-color 0.1s;
 }
 
 .history-item:hover {
@@ -109,14 +109,14 @@ body {
 
 .clear-history-btn {
     position: absolute;
-    top: 5px;
-    right: 5px;
+    top: 3px;
+    right: 3px;
     background-color: rgba(255, 255, 255, 0.2);
     border: none;
     color: #fff;
-    font-size: 10px;
-    padding: 2px 6px;
-    border-radius: 3px;
+    font-size: 7px;
+    padding: 1px 4px;
+    border-radius: 2px;
     cursor: pointer;
     display: none;
 }
@@ -132,29 +132,29 @@ body {
 /* Buttons */
 .buttons {
     display: grid;
-    gap: 8px;
+    gap: 6px;
 }
 
 .row {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 8px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
 }
 
 .row.sci-row {
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
 }
 
 .sci-row .equals {
-    grid-row: span 3;
+    grid-row: span 2;
 }
 
 .btn {
-    height: 48px;
+    height: 26px;
     border: none;
-    border-radius: 6px;
-    font-size: 18px;
-    font-weight: 500;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 160;
     cursor: pointer;
     transition: all 0.1s ease;
     touch-action: manipulation;
@@ -192,7 +192,7 @@ body {
     background-color: #007bff;
     color: #fff;
     grid-row: span 2;
-    font-size: 24px;
+    font-size: 19px;
 }
 
 .btn.equals:hover {
@@ -225,19 +225,19 @@ body {
 }
 
 /* Responsive adjustments */
-@media (max-width: 400px) {
+@media (max-width: 200px) {
     .calculator-container {
-        margin: 10px;
-        padding: 15px;
+        margin: 7px;
+        padding: 12px;
     }
     
     .btn {
-        height: 44px;
-        font-size: 16px;
+        height: 23px;
+        font-size: 8px;
     }
     
     #display {
-        font-size: 24px;
+        font-size: 18px;
     }
 }
 
