@@ -1,254 +1,99 @@
-/* Make sure body takes full screen height and no scroll */
+/* Base styles (portrait + default) */
 body {
     margin: 0;
     padding: 0;
-    height: 100vh;              /* 100% of screen height */
-    display: flex;              /* use flexbox to center */
-    justify-content: center;    /* center horizontally */
-    align-items: center;        /* center vertically */
-    background: #121212;        /* your background color */
-    overflow: hidden;           /* prevent moving up/down */
+    height: 100vh;              
+    display: flex;              
+    justify-content: center;    
+    align-items: center;        
+    background: #121212;        
+    overflow: hidden;           
 }
 
-/* Calculator should not exceed screen */
 #calculator {
-    width: 320px;               /* adjust width */
-    max-height: 90vh;           /* keep inside screen */
+    width: 90vw;
+    max-width: 350px;
+    max-height: 90vh;
     padding: 15px;
     background: #1e1e1e;
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-}
-/* Header */
-.header {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
-    align-items: center;
-    margin-bottom: 13px;
-}
-
-.header h1 {
-    font-size: 12px;
-    color: #333;
-    font-weight: 100;
-}
-
-.mode-btn {
-    background-color: #f8f9fa;
-    border: 1px solid #dee2e6;
-    padding: 6px 12px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 12px;
-    color: #495057;
-    transition: background-color 0.2s;
-}
-
-.mode-btn:hover {
-    background-color: #e9ecef;
-}
-
-/* Display */
-.display {
-    background-color: #000;
-    border-radius: 8px;
-    padding: 15px;
-    margin-bottom: 15px;
-    position: relative;
 }
 
 #display {
     width: 100%;
-    background: none;
-    border: none;
+    height: 15%;
+    min-height: 60px;
+    background: #000;
     color: #fff;
-    font-size: 28px;
+    font-size: clamp(1.2rem, 4vw, 1.8rem);
     text-align: right;
-    padding: 0;
-    outline: none;
-    letter-spacing: 1px;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    overflow: hidden;
 }
 
-#display::placeholder {
-    color: #666;
-}
-
-#history-list {
-    background-color: #333;
-    border-radius: 4px;
-    max-height: 65px;
-    overflow-y: auto;
-    margin-top: 6px;
-    padding: 3px;
-    font-size: 9px;
-    color: #fff;
-    line-height: 0.67;
-}
-
-.history-item {
-    margin-bottom: 2px;
-    cursor: pointer;
-    padding: 1px 0;
-    border-bottom: 1px solid #555;
-    transition: background-color 0.1s;
-}
-
-.history-item:hover {
-    background-color: #444;
-}
-
-.history-item:last-child {
-    border-bottom: none;
-}
-
-.clear-history-btn {
-    position: absolute;
-    top: 3px;
-    right: 3px;
-    background-color: rgba(255, 255, 255, 0.2);
-    border: none;
-    color: #fff;
-    font-size: 7px;
-    padding: 1px 4px;
-    border-radius: 2px;
-    cursor: pointer;
-    display: none;
-}
-
-#history-list:not(:empty) ~ .clear-history-btn {
-    display: block;
-}
-
-.clear-history-btn:hover {
-    background-color: rgba(255, 255, 255, 0.3);
-}
-
-/* Buttons */
-.buttons {
+#buttons {
+    flex: 1;
     display: grid;
-    gap: 6px;
-}
-
-.row {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 6px;
-}
-
-.row.sci-row {
     grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
 }
 
-.sci-row .equals {
-    grid-row: span 2;
-}
-
-.btn {
-    height: 26px;
-    border: none;
-    border-radius: 4px;
-    font-size: 11px;
-    font-weight: 160;
-    cursor: pointer;
-    transition: all 0.1s ease;
-    touch-action: manipulation;
-}
-
-.btn:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.btn:active {
-    transform: translateY(0);
-}
-
-/* Normal Mode Styles */
-.btn.num {
-    background-color: #f8f9fa;
-    color: #333;
-}
-
-.btn.num:hover {
-    background-color: #e9ecef;
-}
-
-.btn.op {
-    background-color: #e9ecef;
-    color: #666;
-}
-
-.btn.op:hover {
-    background-color: #dee2e6;
-}
-
-.btn.equals {
-    background-color: #007bff;
+button {
+    aspect-ratio: 1/1;
+    font-size: clamp(1rem, 4vw, 1.4rem);
+    background: #333;
     color: #fff;
-    grid-row: span 2;
-    font-size: 19px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
 }
 
-.btn.equals:hover {
-    background-color: #0056b3;
+button:hover { background: #555; }
+button:active {
+    transform: scale(0.95);
+    background: #777;
 }
 
-.zero {
+/* Operator buttons */
+button:nth-child(4n) {
+    background: #ff9500;
+}
+button:nth-child(4n):hover { background: #ffa733; }
+button:nth-child(4n):active { background: #cc7a00; }
+
+/* Zero button wider */
+button:nth-last-child(3) {
     grid-column: span 2;
 }
 
-/* Scientific Mode Styles */
-#buttons-scientific .btn.sci {
-    background-color: #ffc107;
-    color: #333;
-}
-
-#buttons-scientific .btn.sci:hover {
-    background-color: #e0a800;
-}
-
-#buttons-scientific .btn.equals {
-    grid-column: 5;
-    grid-row: span 3;
-    height: auto;
-    background-color: #28a745;
-}
-
-#buttons-scientific .btn.equals:hover {
-    background-color: #218838;
-}
-
-/* Responsive adjustments */
-@media (max-width: 200px) {
-    .calculator-container {
-        margin: 7px;
-        padding: 12px;
+/* =========================
+   Landscape Mode Styling
+   ========================= */
+@media (orientation: landscape) {
+    #calculator {
+        width: 80vw;            
+        max-width: 600px;       
+        max-height: 80vh;       
     }
-    
-    .btn {
-        height: 23px;
-        font-size: 8px;
-    }
-    
+
     #display {
-        font-size: 18px;
+        font-size: clamp(1.4rem, 3vw, 2rem);
+        min-height: 80px;
     }
-}
 
-/* General page setup */
-body {
-  margin: 0;
-  padding: 0;
-  background: #222;
-  font-family: Arial, sans-serif;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+    #buttons {
+        gap: 12px;              
+    }
 
-.top-banner-ad {
-  width: 100%;               /* full width of screen */
-  display: flex;             /* center horizontally */
-  justify-content: center;
-  margin-bottom: 10px;       /* space below the banner */
+    button {
+        font-size: clamp(1rem, 2vw, 1.6rem);
+    }
 }
